@@ -24,7 +24,8 @@ testing_testing:
 build_image:
     stage: build_image
     script:
-        - echo $ImageRegUser
+        - echo "$ImageRegUser"
+        - echo "$BUILD_VERSION"
         - docker build -t nodeapi:$BUILD_VERSION .
     tags:
         - node
