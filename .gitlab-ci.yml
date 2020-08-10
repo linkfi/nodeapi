@@ -1,6 +1,7 @@
 stages:
     - build
     - test
+    - build_image
 
 cache:
     paths:
@@ -10,12 +11,20 @@ install_dependencies:
     stage: build
     script:
         - npm install
-           
+
     tags:
         - node
     
 testing_testing:
     stage: test
     script: npm test
+    tags:
+        - node
+
+build_image:
+    stage: build_image
+    script:
+        - echo $ImageRegUser
+        - docker build -t nodeapi:$BUILD_VERSION .
     tags:
         - node
