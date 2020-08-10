@@ -13,6 +13,11 @@ install_dependencies:
     artifacts:
         paths:
             - node_modules/
+    tags:
+        - node
+    
 testing_testing:
     stage: test
     script: npm test
+    tags:
+        - node
