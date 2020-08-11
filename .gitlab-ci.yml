@@ -27,7 +27,8 @@ build_image:
         - echo "Building and pushing docker image"
         - echo $dockerHubUserName
         - docker login -u $dockerHubUserName -p $dockerHubPassword                 
-        - docker build -t nodeapi .       
-        - docker push "${dockerHubUserName}/nodeapi"
+        - docker build -t nodeapi .
+        - docker tag nodeapi "$dockerHubUserName"/"nodeapi"        
+        - docker push "$dockerHubUserName"/"nodeapi"
     tags:
         - node
