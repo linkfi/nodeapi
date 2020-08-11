@@ -1,3 +1,4 @@
+
 stages:
     - build
     - test
@@ -11,11 +12,10 @@ install_dependencies:
     stage: build
     script:
         - npm install
-
     tags:
         - node
     
-testing_testing:
+running_test:
     stage: test
     script: npm test
     tags:
@@ -24,10 +24,7 @@ testing_testing:
 build_image:
     stage: build_image
     script:
-        - echo "Building and pushing docker image"
-        - echo $dockerHubUserName
-        - echo "$dockerHubUserName"/"nodeapi"
-        - echo $dockerHubUserName/nodeapi
+        - echo "Building and pushing docker image"     
         - docker login -u $dockerHubUserName -p $dockerHubPassword                 
         - docker build -t nodeapi .
         - docker tag nodeapi $dockerHubUserName/nodeapi        
